@@ -21,6 +21,8 @@ airflow/logs/
 Thumbs.db
 # Sensitive passwords file (Important!)
 dbt/profiles.yml
+dbt/.profiles.yml
+dbt/.dbt_project.yml
 
 # Generated temporary files by dbt
 dbt/target/
@@ -33,3 +35,30 @@ __pycache__/
 
 # Airflow generated logs
 logs/
+# --- Python & OS Junk ---
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+Thumbs.db
+
+# --- Virtual Environments ---
+venv/
+env/
+.env
+
+# --- Logs (Top-level logs directory shown in image) ---
+logs/
+
+# --- dbt Artifacts & Secrets ---
+# These are generated files and should not be committed
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# **CRITICAL: Do not commit database credentials**
+dbt/profiles.yml
+
+# Less common, but good to ignore if they exist
+dbt/.profiles.yml
+dbt/.dbt_project.yml
