@@ -19,3 +19,17 @@ airflow/logs/
 # OS junk
 .DS_Store
 Thumbs.db
+# Sensitive passwords file (Important!)
+dbt/profiles.yml
+
+# Generated temporary files by dbt
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
+
+# Python generated files (if any local ones exist)
+__pycache__/
+*.pyc
+
+# Airflow generated logs
+logs/

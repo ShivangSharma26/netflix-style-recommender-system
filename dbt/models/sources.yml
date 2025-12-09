@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: netflix_raw  # Hum apne source data ko yeh naam de rahe hain
+    database: netflix_db # Snowflake DB name
+    schema: public       # Snowflake Schema name jahan seeds load huye
+    tables:
+      - name: movies
+      - name: ratings

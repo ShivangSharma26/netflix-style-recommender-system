@@ -12,5 +12,6 @@ RUN apt-get update && \
 # Switch back to the airflow user so things run securely
 USER airflow
 
-# Install dbt-snowflake in the same Python environment as Airflow
-RUN pip install --no-cache-dir dbt-snowflake
+# --- SIMPLEST INSTALLATION ---
+# Bina version ke seedha install kar rahe hain (latest uthayega)
+RUN pip install --no-cache-dir dbt-snowflake astronomer-cosmos
