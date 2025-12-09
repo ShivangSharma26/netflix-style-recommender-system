@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtualenv
+venv/
+env/
+.env
+
+# dbt artifacts
+dbt_packages/
+logs/
+target/
+
+# Airflow logs
+airflow/logs/
+
+# OS junk
+.DS_Store
+Thumbs.db
