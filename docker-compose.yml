@@ -31,12 +31,15 @@ services:
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
       # This is crucial: it tells Airflow where our dbt project is inside the container
       - DBT_PROJECT_DIR=/opt/airflow/dbt
+      
     volumes:
       # Mount our local folders to the correct paths inside the container
       - ./dags:/opt/airflow/dags
       - ./dbt:/opt/airflow/dbt
       - ./data:/opt/airflow/data
       - ./logs:/opt/airflow/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./ml_scripts:/opt/airflow/ml_scripts
     ports:
       - "8080:8080"
     healthcheck:
@@ -58,11 +61,14 @@ services:
       - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
       - DBT_PROJECT_DIR=/opt/airflow/dbt
+     
     volumes:
       - ./dags:/opt/airflow/dags
       - ./dbt:/opt/airflow/dbt
       - ./data:/opt/airflow/data
       - ./logs:/opt/airflow/logs
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./ml_scripts:/opt/airflow/ml_scripts
 
   # The database for Airflow itself
   postgres:
@@ -77,6 +83,19 @@ services:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 5s
       retries: 5
+      
+  ml-trainer:
+    build:
+      context: .
+      dockerfile: Dockerfile.ml # Hum apna naya ML Dockerfile use karenge
+    # Yeh container hamesha nahi chalega, Airflow isse jab zaroorat hogi tab start karega
+    profiles: ["donotstart"] 
+    volumes:
+      # Scripts tak access
+      - ./ml_scripts:/app/ml_scripts
+      # Trained model save karne ke liye data folder tak access
+      - ./data:/app/data
 
 volumes:
   postgres-db-volume:
+

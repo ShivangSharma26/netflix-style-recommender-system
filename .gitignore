@@ -62,3 +62,15 @@ dbt/profiles.yml
 # Less common, but good to ignore if they exist
 dbt/.profiles.yml
 dbt/.dbt_project.yml
+# ... (existing content like .env, dbt/profiles.yml, logs/ etc.)
+
+# --- ML Artifacts (These are large binary files, DONT push them) ---
+data/recommender_model.pkl
+data/user_item_matrix.pkl
+data/
+
+# --- API Files to Ignore ---
+api/__pycache__/
+api/venv/
+
+

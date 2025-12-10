@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+pandas
+scikit-learn
+joblib
+# Hum same versions use kar rahe hain jo training mein kiye the taaki compatibility rahe.

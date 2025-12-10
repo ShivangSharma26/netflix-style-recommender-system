@@ -14,4 +14,4 @@ USER airflow
 
 # --- SIMPLEST INSTALLATION ---
 # Bina version ke seedha install kar rahe hain (latest uthayega)
-RUN pip install --no-cache-dir dbt-snowflake astronomer-cosmos
+RUN pip install --no-cache-dir dbt-snowflake astronomer-cosmos docker

@@ -1,0 +1,19 @@
+# Python 3.10 slim image use kar rahe hain
+FROM python:3.10-slim-bullseye
+
+# Working directory set karte hain
+WORKDIR /app
+
+# Requirements file copy karke install karte hain
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Hamara API ka code copy karte hain
+COPY main.py .
+
+# Port 8000 expose karte hain (jahan API chalegi)
+EXPOSE 8000
+
+# Container chalne par yeh command run hogi (Uvicorn server start karegi)
+# reload flag development ke liye acha hai, code change hote hi server restart ho jata hai.
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
