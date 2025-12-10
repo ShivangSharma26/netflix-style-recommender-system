@@ -95,6 +95,22 @@ services:
       - ./ml_scripts:/app/ml_scripts
       # Trained model save karne ke liye data folder tak access
       - ./data:/app/data
+  recommender-api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    # API hamesha chalni chahiye
+    restart: always
+    volumes:
+      # API ke code tak access
+      - ./api:/app
+      # Model files tak access (Trained model yahan hai)
+      - ./data:/app/data
+    ports:
+      # Local port 8001 ko container ke port 8000 se jod rahe hain
+      - "8001:8000"
+    # Isse api ko dbt/Airflow ke network mein jaane ki zaroorat nahi hai
+    network_mode: bridge
 
 volumes:
   postgres-db-volume:
