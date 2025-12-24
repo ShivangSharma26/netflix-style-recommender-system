@@ -12,6 +12,10 @@
 
 The system automates the entire lifecycle of data: ingesting raw interactions into **Snowflake**, transforming them via **dbt**, orchestrating the ML training workflow with **Apache Airflow**, and deploying a real-time inference API using **FastAPI**.
 
+**DEMO VIDEO LINK = https://drive.google.com/file/d/15OLSg0wFvG5yR1c2td0PUb2m1UhpDhpG/view?usp=sharing**
+
+
+
 ## 🏗 Architecture
 The pipeline consists of three main stages:
 1.  **Data Engineering:** dbt transforms raw data in Snowflake into a clean `FACT_RATINGS` table.
